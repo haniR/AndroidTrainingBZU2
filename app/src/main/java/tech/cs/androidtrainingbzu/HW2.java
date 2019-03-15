@@ -1,5 +1,7 @@
 package tech.cs.androidtrainingbzu;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,6 +10,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,19 +18,24 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-public class HW2 extends AppCompatActivity {
+public class HW2 extends AppCompatActivity
+        implements DatePickerDialog.OnDateSetListener{
     Spinner spinner;
-    Button save,open,takepic;
+    Button save,open,takepic,cal;
     EditText name,email,phone;
     CheckBox javaCheck,cCheck,pythonCheck;
     RadioGroup radioGroup;
@@ -37,14 +45,20 @@ public class HW2 extends AppCompatActivity {
     Bitmap bitmap;
     public static final String MSG1="MSG";
     public static final int REQUEST_SELECT_CONTACT=2;
+    TextView caltext;
+    String dateis;
+
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hw2);
         spinner = (Spinner)findViewById(R.id.spinner);
         save = (Button)findViewById(R.id.save);
         open= (Button)findViewById(R.id.open);
         takepic = (Button)findViewById(R.id.takepic);
+        cal = (Button)findViewById(R.id.birth) ;
         name = (EditText)findViewById(R.id.name);
         email = (EditText)findViewById(R.id.email);
         phone = (EditText)findViewById(R.id.phoneView);
@@ -54,6 +68,7 @@ public class HW2 extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.gender);
         rmale = (RadioButton) findViewById(R.id.male);
         imageview = (ImageView)findViewById(R.id.imageView);
+        caltext = (TextView)findViewById(R.id.calText);
         populateSpinner();
         imageview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,8 +87,24 @@ public class HW2 extends AppCompatActivity {
                 }
             }
         });
+        cal.setOnClickListener(new View.OnClickListener() {
 
-
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+            }
+        });
+    }
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        dateis=currentDateString;
+        caltext.setText(currentDateString);
     }
 
     @Override
@@ -153,6 +184,7 @@ public class HW2 extends AppCompatActivity {
         extras.putString("experiance",s);
         extras.putString("wantlearn",spinch);
         extras.putString("gender",genderIs);
+        extras.putString("date",dateis);
         intent.putExtras(extras);
         intent.putExtra(MSG1,bitmap);
         startActivity(intent);
@@ -167,4 +199,6 @@ public class HW2 extends AppCompatActivity {
 
 
     }
+
+
 }

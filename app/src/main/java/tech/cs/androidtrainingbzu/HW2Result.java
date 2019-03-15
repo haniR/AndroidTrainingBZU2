@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 public class HW2Result extends AppCompatActivity {
-    EditText name,email,phone,gender,exp,want;
+    EditText name,email,phone,gender,exp,want,births;
     ImageView imageview2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class HW2Result extends AppCompatActivity {
         gender = (EditText)findViewById(R.id.genderis);
         exp = (EditText)findViewById(R.id.experienceis);
         want = (EditText)findViewById(R.id.wantis);
+        births = (EditText)findViewById(R.id.birthis);
         imageview2 = (ImageView)findViewById(R.id.imageView2);
         Bundle extras = getIntent().getExtras();
         String names = extras.getString("name");
@@ -29,6 +30,7 @@ public class HW2Result extends AppCompatActivity {
         String genders = extras.getString("gender");
         String exps = extras.getString("experiance");
         String wants = extras.getString("wantlearn");
+        String birthss = extras.getString("date");
         Bitmap bitmap = extras.getParcelable(HW2.MSG1);
         imageview2.setImageBitmap(bitmap);
         name.setText(names);
@@ -37,6 +39,7 @@ public class HW2Result extends AppCompatActivity {
         gender.setText(genders);
         exp.setText(exps);
         want.setText(wants);
+        births.setText(birthss);
 
     }
 
