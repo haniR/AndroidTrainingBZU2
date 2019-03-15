@@ -1,17 +1,13 @@
 package tech.cs.androidtrainingbzu;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +21,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -33,7 +28,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class HW2 extends AppCompatActivity
-        implements DatePickerDialog.OnDateSetListener{
+        implements DatePickerDialog.OnDateSetListener,DialogPohne.ExampleDialogListener{
     Spinner spinner;
     Button save,open,takepic,cal;
     EditText name,email,phone;
@@ -95,6 +90,13 @@ public class HW2 extends AppCompatActivity
                 datePicker.show(getSupportFragmentManager(), "date picker");
             }
         });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogPohne dialog = new DialogPohne();
+                dialog.show(getSupportFragmentManager(), "example dialog");
+            }
+        });
     }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -106,6 +108,10 @@ public class HW2 extends AppCompatActivity
         dateis=currentDateString;
         caltext.setText(currentDateString);
     }
+
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
@@ -143,6 +149,12 @@ public class HW2 extends AppCompatActivity
     }
 
     public void save(View view) {
+
+    }
+
+
+    @Override
+    public void onYesClicked() {
         String spinch = spinner.getSelectedItem().toString();//get selected Spin
         String fName= name.getText().toString();//Get name
         String eemail = email.getText().toString();//Get email
@@ -194,11 +206,9 @@ public class HW2 extends AppCompatActivity
         /* ********************************************************************************************* */
 
         //Toast.makeText(this, "Have a Credit : "+credit, Toast.LENGTH_SHORT).show();
-       // Toast.makeText(this, "Your Name : "+fName+"\n"+"Your Gender Is : "+genderIs+"\n"+"Your Experence is " +
-         //       ": " +s+"\n"+"You Want Learn : "+spinch+"\n", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "Your Name : "+fName+"\n"+"Your Gender Is : "+genderIs+"\n"+"Your Experence is " +
+        //       ": " +s+"\n"+"You Want Learn : "+spinch+"\n", Toast.LENGTH_SHORT).show();
 
 
     }
-
-
 }
