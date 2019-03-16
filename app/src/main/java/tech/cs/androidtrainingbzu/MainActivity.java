@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     Button button0, button1, button2, button3, button4, button5, button6,
             button7, button8, button9, buttonAdd, buttonSub, buttonDivision,
             buttonMul, buttondot, buttonC, buttonEqual,buttonsin,buttoncos;
-    EditText calculation;
+    TextView calculation;
     TextView answer;
 
     float ValueOne, ValueTwo;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         buttonEqual = (Button) findViewById(R.id.btn_equal);
         buttonsin = (Button) findViewById(R.id.btn_sin);
         buttoncos = (Button) findViewById(R.id.btn_cos);
-        calculation = (EditText) findViewById(R.id.calculation);
+        calculation = (TextView) findViewById(R.id.calculation);
         answer = (TextView) findViewById(R.id.answer);
 
         button1.setOnClickListener(new View.OnClickListener() {

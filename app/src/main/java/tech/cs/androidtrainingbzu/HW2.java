@@ -108,11 +108,6 @@ public class HW2 extends AppCompatActivity
         dateis=currentDateString;
         caltext.setText(currentDateString);
     }
-
-
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -134,9 +129,6 @@ public class HW2 extends AppCompatActivity
             }
         }
     }
-
-
-
     private  void  populateSpinner(){
         List<String> books = new ArrayList<>();
         books.add("Android");
