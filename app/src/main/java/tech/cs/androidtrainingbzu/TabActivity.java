@@ -70,6 +70,12 @@ public class TabActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Bundle extras = getIntent().getExtras();
+        String names = extras.getString("name");
+        Bitmap bitmap = extras.getParcelable(HW2.MSG1);
+        Pic_fragment pic = new Pic_fragment();
+        pic.imageView3.setImageBitmap(bitmap);
+
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
@@ -79,23 +85,15 @@ public class TabActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
+
     public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();

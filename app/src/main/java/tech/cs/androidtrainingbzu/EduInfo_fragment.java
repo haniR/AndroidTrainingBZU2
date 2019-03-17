@@ -15,7 +15,7 @@ public class EduInfo_fragment extends Fragment {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View v= inflater.inflate(R.layout.pic_fragment,container,false);
+            View v= inflater.inflate(R.layout.edu_info_fragment,container,false);
             genderfr = (EditText)v.findViewById(R.id.genderfragment);
             expfr = (EditText)v.findViewById(R.id.experiencefragment);
             wantfr = (EditText)v.findViewById(R.id.wantfragment);
