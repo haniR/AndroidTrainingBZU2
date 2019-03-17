@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class TabActivity extends AppCompatActivity {
-
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
