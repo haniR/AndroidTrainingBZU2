@@ -19,9 +19,9 @@ public class EduInfo_fragment extends Fragment {
             String genders = getArguments().getString("gender");
             String exps = getArguments().getString("experiance");
             String wants = getArguments().getString("wantlearn");
-            genderfr.setText(genders);
-            expfr.setText(exps);
-            wantfr.setText(wants);
+            ((EditText)v.findViewById(R.id.genderfragment)).setText(genders);
+            ((EditText)v.findViewById(R.id.experiencefragment)).setText(exps);
+            ((EditText)v.findViewById(R.id.wantfragment)).setText(wants);
             return  v;
         }
     }

@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,48 +28,46 @@ import java.util.Calendar;
 import java.util.List;
 
 public class HW2 extends AppCompatActivity
-        implements DatePickerDialog.OnDateSetListener,DialogPohne.ExampleDialogListener{
+        implements DatePickerDialog.OnDateSetListener, DialogPohne.ExampleDialogListener {
+    public static final String MSG1 = "MSG";
+    public static final int REQUEST_SELECT_CONTACT = 2;
     Spinner spinner;
-    Button save,open,takepic,cal;
-    EditText name,email,phone;
-    CheckBox javaCheck,cCheck,pythonCheck;
+    Button save, open, takepic, cal;
+    EditText name, email, phone;
+    CheckBox javaCheck, cCheck, pythonCheck;
     RadioGroup radioGroup;
-    RadioButton radioButton,rmale,rfemale;
+    RadioButton radioButton, rmale, rfemale;
     ImageView imageview;
-    private ArrayList<String> exp;
     Bitmap bitmap;
-    public static final String MSG1="MSG";
-    public static final int REQUEST_SELECT_CONTACT=2;
     TextView caltext;
     String dateis;
-
-
+    private ArrayList<String> exp;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hw2);
-        spinner = (Spinner)findViewById(R.id.spinner);
-        save = (Button)findViewById(R.id.save);
-        open= (Button)findViewById(R.id.open);
-        takepic = (Button)findViewById(R.id.takepic);
-        cal = (Button)findViewById(R.id.birth) ;
-        name = (EditText)findViewById(R.id.name);
-        email = (EditText)findViewById(R.id.email);
-        phone = (EditText)findViewById(R.id.phoneView);
-        javaCheck = (CheckBox)findViewById(R.id.java);
-        cCheck = (CheckBox)findViewById(R.id.c);
-        pythonCheck = (CheckBox)findViewById(R.id.python);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        save = (Button) findViewById(R.id.save);
+        open = (Button) findViewById(R.id.open);
+        takepic = (Button) findViewById(R.id.takepic);
+        cal = (Button) findViewById(R.id.birth);
+        name = (EditText) findViewById(R.id.name);
+        email = (EditText) findViewById(R.id.email);
+        phone = (EditText) findViewById(R.id.phoneView);
+        javaCheck = (CheckBox) findViewById(R.id.java);
+        cCheck = (CheckBox) findViewById(R.id.c);
+        pythonCheck = (CheckBox) findViewById(R.id.python);
         radioGroup = (RadioGroup) findViewById(R.id.gender);
         rmale = (RadioButton) findViewById(R.id.male);
-        imageview = (ImageView)findViewById(R.id.imageView);
-        caltext = (TextView)findViewById(R.id.calText);
+        imageview = (ImageView) findViewById(R.id.imageView);
+        caltext = (TextView) findViewById(R.id.calText);
         populateSpinner();
         imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
             }
         });
         open.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +76,7 @@ public class HW2 extends AppCompatActivity
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
                 if (intent.resolveActivity(getPackageManager()) != null) {
-                   startActivityForResult(intent,REQUEST_SELECT_CONTACT);
+                    startActivityForResult(intent, REQUEST_SELECT_CONTACT);
                 }
             }
         });
@@ -98,6 +96,7 @@ public class HW2 extends AppCompatActivity
             }
         });
     }
+
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
@@ -105,17 +104,18 @@ public class HW2 extends AppCompatActivity
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-        dateis=currentDateString;
+        dateis = currentDateString;
         caltext.setText(currentDateString);
     }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            bitmap= (Bitmap)data.getExtras().get("data");
+            bitmap = (Bitmap) data.getExtras().get("data");
             imageview.setImageBitmap(bitmap);
-        }else  if (requestCode == REQUEST_SELECT_CONTACT && resultCode == RESULT_OK) {
+        } else if (requestCode == REQUEST_SELECT_CONTACT && resultCode == RESULT_OK) {
             // Get the URI and query the content provider for the phone number
             Uri contactUri = data.getData();
             String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER};
@@ -129,14 +129,15 @@ public class HW2 extends AppCompatActivity
             }
         }
     }
-    private  void  populateSpinner(){
+
+    private void populateSpinner() {
         List<String> books = new ArrayList<>();
         books.add("Android");
         books.add("PHP");
         books.add("C++");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,books);
+                android.R.layout.simple_spinner_item, books);
         spinner.setAdapter(adapter);
     }
 
@@ -148,31 +149,31 @@ public class HW2 extends AppCompatActivity
     @Override
     public void onYesClicked() {
         String spinch = spinner.getSelectedItem().toString();//get selected Spin
-        String fName= name.getText().toString();//Get name
+        String fName = name.getText().toString();//Get name
         String eemail = email.getText().toString();//Get email
         String pphone = phone.getText().toString();//Get Phone
 
         /* ******************************************************************************************************************************** */
-        int radioId =radioGroup.getCheckedRadioButtonId();
+        int radioId = radioGroup.getCheckedRadioButtonId();
         radioButton = findViewById(radioId);
         String genderIs = radioButton.getText().toString();//get gender
         //Toast.makeText(this, "you choice "+genderIs, Toast.LENGTH_SHORT).show();
         /* *********************************************************************************************** */
         exp = new ArrayList<>();
 
-        if(javaCheck.isChecked()){
+        if (javaCheck.isChecked()) {
             exp.add("Java");
-        }else{
+        } else {
             exp.remove("Java");
         }
-        if(cCheck.isChecked()){
+        if (cCheck.isChecked()) {
             exp.add("C");
-        }else{
+        } else {
             exp.remove("C");
         }
-        if(pythonCheck.isChecked()){
+        if (pythonCheck.isChecked()) {
             exp.add("Python");
-        }else{
+        } else {
             exp.remove("Python");
         }
         StringBuilder stringBuilder = new StringBuilder();
@@ -181,15 +182,15 @@ public class HW2 extends AppCompatActivity
         String s = stringBuilder.toString();
         Intent intent = new Intent(getApplicationContext(), TabActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("name",fName);
-        extras.putString("email",eemail);
-        extras.putString("phone",pphone);
-        //extras.putParcelable(MSG1,bitmap);
-        extras.putString("experiance",s);
-        extras.putString("wantlearn",spinch);
-        extras.putString("gender",genderIs);
-        extras.putString("date",dateis);
-        intent.putExtra(MSG1,bitmap);
+        extras.putString("name", fName);
+        extras.putString("email", eemail);
+        extras.putString("phone", pphone);
+        extras.putParcelable(MSG1,bitmap);
+        extras.putString("experiance", s);
+        extras.putString("wantlearn", spinch);
+        extras.putString("gender", genderIs);
+        extras.putString("date", dateis);
+        //intent.putExtra(MSG1, bitmap);
         intent.putExtras(extras);
         startActivity(intent);
 

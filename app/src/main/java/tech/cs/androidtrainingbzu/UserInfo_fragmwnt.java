@@ -20,10 +20,10 @@ public class UserInfo_fragmwnt extends Fragment {
         String emails = getArguments().getString("email");
         String phones = getArguments().getString("phone");
         String birthss = getArguments().getString("date");
-        namefr.setText(names);
-        emailfr.setText(emails);
-        phonefr.setText(phones);
-        birthfr.setText(birthss);
+        ((EditText)v.findViewById(R.id.namefragment)).setText(names);
+        ((EditText)v.findViewById(R.id.emailfragment)).setText(emails);
+        ((EditText)v.findViewById(R.id.phonefragment)).setText(phones);
+        ((EditText)v.findViewById(R.id.birthfragment)).setText(birthss);
             return v;
         }
     }
