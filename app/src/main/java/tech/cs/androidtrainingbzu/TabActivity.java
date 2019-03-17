@@ -1,5 +1,6 @@
 package tech.cs.androidtrainingbzu;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -51,8 +52,20 @@ public class TabActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+
             }
         });
+
+           // Bundle extras = getIntent().getExtras();
+//            Pic_fragment pic = new Pic_fragment();
+//            EduInfo_fragment ed= new EduInfo_fragment();
+//            UserInfo_fragmwnt us = new UserInfo_fragmwnt();
+//
+//            pic.setArguments(extras);
+//            ed.setArguments(extras);
+//            us.setArguments(extras);
+
 
     }
 
@@ -70,11 +83,11 @@ public class TabActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        Bundle extras = getIntent().getExtras();
-        String names = extras.getString("name");
-        Bitmap bitmap = extras.getParcelable(HW2.MSG1);
-        Pic_fragment pic = new Pic_fragment();
-        pic.imageView3.setImageBitmap(bitmap);
+//        Bundle extras = getIntent().getExtras();
+//        String names = extras.getString("name");
+//        Bitmap bitmap = extras.getParcelable(HW2.MSG1);
+//        Pic_fragment pic = new Pic_fragment();
+//        pic.imageView3.setImageBitmap(bitmap);
 
 
         //noinspection SimplifiableIfStatement
@@ -97,6 +110,7 @@ public class TabActivity extends AppCompatActivity {
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
+
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
@@ -106,81 +120,40 @@ public class TabActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.activity_tab, container, false);
-           // TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments()
-              //      .getInt(ARG_SECTION_NUMBER)));
+            //Bundle extras = getIntent().getExtras();
+
             return rootView;
         }
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
-//            Bundle extras = getIntent().getExtras();
-//            String names = extras.getString("name");
-//            String emails = extras.getString("email");
-//            String phones = extras.getString("phone");
-//            String genders = extras.getString("gender");
-//            String exps = extras.getString("experiance");
-//            String wants = extras.getString("wantlearn");
-//            String birthss = extras.getString("date");
-//            Bitmap bitmap = extras.getParcelable(HW2.MSG1);
-//            Pic_fragment pic = new Pic_fragment();
-//            pic.imageView3.setImageBitmap(bitmap);
-//            EduInfo_fragment ed= new EduInfo_fragment();
-//            UserInfo_fragmwnt us = new UserInfo_fragmwnt();
-//
-//            us.namefr.setText(names);
-//            us.emailfr.setText(emails);
-//            us.phonefr.setText(phones);
-//            ed.genderfr.setText(genders);
-//            ed.expfr.setText(exps);
-//            ed.wantfr.setText(wants);
-//            us.birthfr.setText(birthss);
+
         }
 
         @Override
         public Fragment getItem(int position) {
-//            Bundle extras = getIntent().getExtras();
-//            String names = extras.getString("name");
-//            String emails = extras.getString("email");
-//            String phones = extras.getString("phone");
-//            String genders = extras.getString("gender");
-//            String exps = extras.getString("experiance");
-//            String wants = extras.getString("wantlearn");
-//            String birthss = extras.getString("date");
-//            Bitmap bitmap = extras.getParcelable(HW2.MSG1);
-//            Pic_fragment pic = new Pic_fragment();
-//            EduInfo_fragment ed= new EduInfo_fragment();
-//            UserInfo_fragmwnt us = new UserInfo_fragmwnt();
-
-
 
             Fragment fragment = null;
+            Bundle extras = getIntent().getExtras();
+            Bitmap bb= extras.getParcelable(HW2.MSG1);
             switch (position) {
-                case 0:
-                    fragment = new Pic_fragment();
-//                    pic.imageView3.setImageBitmap(bitmap);
-                    break;
-                case 1:
-                    fragment = new UserInfo_fragmwnt();
-//                    us.namefr.setText(names);
-//                    us.emailfr.setText(emails);
-//                    us.phonefr.setText(phones);
-//                    us.birthfr.setText(birthss);
 
+                case 0:
+                    fragment = new  Pic_fragment();
+                    fragment.setArguments(extras);
                     break;
-                case 2:
-                    fragment = new EduInfo_fragment();
-//                    ed.genderfr.setText(genders);
-//                    ed.expfr.setText(exps);
-//                    ed.wantfr.setText(wants);
-                    break;
+//                case 1:
+//                    fragment = new UserInfo_fragmwnt();
+//                    fragment.setArguments(extras);
+//
+//                    break;
+//                case 2:
+//                    fragment = new EduInfo_fragment();
+//                    fragment.setArguments(extras);
+//                    break;
             }
             return fragment;
         }

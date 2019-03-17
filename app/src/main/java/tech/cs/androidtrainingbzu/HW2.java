@@ -184,13 +184,13 @@ public class HW2 extends AppCompatActivity
         extras.putString("name",fName);
         extras.putString("email",eemail);
         extras.putString("phone",pphone);
-        //extras.putString("imageview",bitmap);
+        //extras.putParcelable(MSG1,bitmap);
         extras.putString("experiance",s);
         extras.putString("wantlearn",spinch);
         extras.putString("gender",genderIs);
         extras.putString("date",dateis);
-        intent.putExtras(extras);
         intent.putExtra(MSG1,bitmap);
+        intent.putExtras(extras);
         startActivity(intent);
 
         //Toast.makeText(this, "choices is "+stringBuilder, Toast.LENGTH_SHORT).show();

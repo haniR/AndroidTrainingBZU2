@@ -1,6 +1,8 @@
 package tech.cs.androidtrainingbzu;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,11 +23,14 @@ public class Pic_fragment extends Fragment {
 
         View v= inflater.inflate(R.layout.pic_fragment,container,false);
         imageView3 = (ImageView)v.findViewById(R.id.imageviewfragment);
+        //Bundle b=getArguments();
 
+        Bitmap bitmap =getArguments().getParcelable(HW2.MSG1);//getArguments().getParcelable(HW2.MSG1);
+        imageView3.setImageBitmap(bitmap);
         return  v;
     }
 
-    public Pic_fragment() {
 
-    }
+
+
 }

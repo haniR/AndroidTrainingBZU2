@@ -16,9 +16,12 @@ public class EduInfo_fragment extends Fragment {
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View v= inflater.inflate(R.layout.edu_info_fragment,container,false);
-            genderfr = (EditText)v.findViewById(R.id.genderfragment);
-            expfr = (EditText)v.findViewById(R.id.experiencefragment);
-            wantfr = (EditText)v.findViewById(R.id.wantfragment);
+            String genders = getArguments().getString("gender");
+            String exps = getArguments().getString("experiance");
+            String wants = getArguments().getString("wantlearn");
+            genderfr.setText(genders);
+            expfr.setText(exps);
+            wantfr.setText(wants);
             return  v;
         }
     }

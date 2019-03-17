@@ -16,10 +16,14 @@ public class UserInfo_fragmwnt extends Fragment {
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View v= inflater.inflate(R.layout.user_info_fragment,container,false);
-            namefr = (EditText)v.findViewById(R.id.namefragment);
-            emailfr = (EditText)v.findViewById(R.id.emailfragment);
-            phonefr = (EditText)v.findViewById(R.id.phonefragment);
-            birthfr = (EditText)v.findViewById(R.id.birthfragment);
+        String names = getArguments().getString("name");
+        String emails = getArguments().getString("email");
+        String phones = getArguments().getString("phone");
+        String birthss = getArguments().getString("date");
+        namefr.setText(names);
+        emailfr.setText(emails);
+        phonefr.setText(phones);
+        birthfr.setText(birthss);
             return v;
         }
     }
