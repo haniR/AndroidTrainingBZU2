@@ -179,7 +179,7 @@ public class HW2 extends AppCompatActivity
         for (String s : exp)
             stringBuilder.append(s).append("\n");
         String s = stringBuilder.toString();
-        Intent intent = new Intent(getApplicationContext(), HW2Result.class);
+        Intent intent = new Intent(getApplicationContext(), TabActivity.class);
         Bundle extras = new Bundle();
         extras.putString("name",fName);
         extras.putString("email",eemail);
