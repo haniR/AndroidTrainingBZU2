@@ -23,9 +23,9 @@ public class Pic_fragment extends Fragment {
 
         View v= inflater.inflate(R.layout.pic_fragment,container,false);
         imageView3 = (ImageView)v.findViewById(R.id.imageviewfragment);
-        //Bundle b=getArguments();
+        Bundle b=getArguments();
 
-        Bitmap bitmap =getArguments().getParcelable(HW2.MSG1);//getArguments().getParcelable(HW2.MSG1);
+      Bitmap bitmap =getArguments().getParcelable(HW2.MSG1);//getArguments().getParcelable(HW2.MSG1);
         imageView3.setImageBitmap(bitmap);
         return  v;
     }
