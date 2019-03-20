@@ -1,4 +1,4 @@
-package tech.cs.androidtrainingbzu;
+package tech.cs.androidtrainingbzu.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import android.widget.ImageView;
 
 
 import java.util.zip.Inflater;
+
+import tech.cs.androidtrainingbzu.HW2;
+import tech.cs.androidtrainingbzu.R;
 
 public class Pic_fragment extends Fragment {
     ImageView imageView3 ;

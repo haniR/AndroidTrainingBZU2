@@ -1,4 +1,4 @@
-package tech.cs.androidtrainingbzu;
+package tech.cs.androidtrainingbzu.fragments;
 
 
 import android.app.DatePickerDialog;

@@ -1,4 +1,4 @@
-package tech.cs.androidtrainingbzu;
+package tech.cs.androidtrainingbzu.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import tech.cs.androidtrainingbzu.R;
 
 public class EduInfo_fragment extends Fragment {
     EditText genderfr,expfr,wantfr;

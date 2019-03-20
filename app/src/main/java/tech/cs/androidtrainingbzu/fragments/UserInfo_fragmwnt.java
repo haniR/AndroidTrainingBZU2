@@ -1,4 +1,4 @@
-package tech.cs.androidtrainingbzu;
+package tech.cs.androidtrainingbzu.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
+import tech.cs.androidtrainingbzu.R;
 
 public class UserInfo_fragmwnt extends Fragment {
     EditText namefr,emailfr,phonefr,birthfr;

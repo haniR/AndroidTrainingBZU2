@@ -11,11 +11,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+
+import tech.cs.androidtrainingbzu.fragments.EduInfo_fragment;
+import tech.cs.androidtrainingbzu.fragments.Pic_fragment;
+import tech.cs.androidtrainingbzu.fragments.UserInfo_fragmwnt;
 
 public class TabActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
