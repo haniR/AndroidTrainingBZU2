@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".recycleViewMovie"></activity>
         <activity
             android:name=".TabActivity"
             android:label="@string/title_activity_tab"
@@ -20,7 +21,6 @@
         <activity android:name=".HW2Result">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
         <activity android:name=".HW2">

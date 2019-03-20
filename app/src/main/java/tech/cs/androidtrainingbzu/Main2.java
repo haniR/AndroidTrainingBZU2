@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Main2 extends AppCompatActivity {
-    Button calculator,google,Myphone,Takepic,EmailSend,hw2;
+    Button calculator,google,Myphone,Takepic,EmailSend,hw2,hw3;
     EditText emailTo;
 
     @Override
@@ -23,6 +23,8 @@ public class Main2 extends AppCompatActivity {
         EmailSend = (Button)findViewById(R.id.sendEmail);
         emailTo = (EditText)findViewById(R.id.emailTo);
         hw2 = (Button)findViewById(R.id.hw2);
+        hw3 = (Button)findViewById(R.id.hw3);
+
 
         EmailSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +72,12 @@ public class Main2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),HW2.class));
+            }
+        });
+        hw3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),recycleViewMovie.class));
             }
         });
 
